@@ -62,28 +62,24 @@ $N = 5;
 
 function solution($N, $A) {
 
-	// Initialize array of size $N w/ initial values of 0
 	$res = array_fill(0, $N, 0);
 
-	$NPlusOne = $N + 1;
 	$maxValue = 0;
 
-	// Loop through $A
 	for ( $i=0, $limit = count($A); $i < $limit; $i++ ) {
+		$res_key_value = $A[$i] - 1;
 
 		if ( $A[$i] <= $N ) {
 
-			// $A[$i] != N, so calculate A[K] = X (i.e. operation K is increase(X))
-			$res[$A[$i] - 1] = $res[$A[$i] - 1] + 1;
+			$res[$res_key_value] = $res[$res_key_value] + 1;
 
-			if ( $maxValue < $res[$A[$i] - 1] ) {
-				$maxValue = $res[$A[$i] - 1];
+			if ( $maxValue < $res[$res_key_value] ) {
+				$maxValue = $res[$res_key_value];
 			}
 
 		}
-		elseif ( $A[$i] == $NPlusOne ) {
+		else {
 
-			// $A[$i] === N, so calculate A[K] = N + 1 (i.e. max counter operation)
 			$res = array_fill(0, $N, $maxValue);
 		}
 
@@ -92,5 +88,4 @@ function solution($N, $A) {
 	return $res;
 }
 
-// solution($N, $A);
 var_dump(solution($N, $A));
