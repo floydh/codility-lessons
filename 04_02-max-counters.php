@@ -71,7 +71,7 @@ function solution($N, $A) {
 
 		if ( $A[$i] <= $N ) {
 
-			$res[$res_key_value] = $res[$res_key_value] + 1;
+			++$res[$res_key_value];
 
 			if ( $maxValue < $res[$res_key_value] ) {
 				$maxValue = $res[$res_key_value];
